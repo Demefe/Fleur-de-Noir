@@ -52,17 +52,7 @@ def faleConosco(request):
 
 def produto_vitrine(request):
     produtos = Produto.objects.select_related("categoria").all()
-    try:
-        response = requests.get("http://127.0.0.1:8000/api/produtos/")
-        produtos_api = response.json()
-    except:
-        produtos_api = []
-    return render(
-        request,
-        "produto-vitrine.html",
-        {"produtos": produtos, "produtos_api": produtos_api},
-    )
-
+    return render(request, "produto-vitrine.html", {"produtos": produtos, "produtos_api": []})
 
 @login_required(login_url="/login/")
 def comprar(request, id_prod):
