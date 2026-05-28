@@ -1,0 +1,200 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block titulo %}Quem Somos Noir de Fleur{% endblock %}
+
+{% block conteudo %}
+
+<div class="hero" style="padding:100px 20px 80px;">
+  <div style="max-width:700px;margin:0 auto;text-align:center;">
+    <p
+      style="font-size:15px;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:20px;font-weight:600;opacity:.85;">
+      A Empresa</p>
+    <h3
+      style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.8rem;font-weight:400;color:var(--creme);margin-bottom:24px;line-height:1.4;">
+      Chocolate não é apenas sabor.<br>É memória, é ritual, é arte.
+    </h3>
+    <p style="color:var(--texto-soft);font-size:.92rem;line-height:1.9;margin-bottom:16px;">
+      A Noir de Fleur é uma maison de alta chocolateria fundada sobre os pilares da excelência artesanal e da
+      sofisticação francesa. Nascemos da crença de que o chocolate, quando tratado com respeito e técnica, é capaz de
+      despertar experiências sensoriais únicas.
+    </p>
+    <p style="color:var(--texto-soft);font-size:.92rem;line-height:1.9;">
+      Cada peça da nossa coleção é desenvolvida com ingredientes raros de origens selecionadas, combinando tradição
+      ancestral e inovação para entregar o que há de mais refinado na confeitaria mundial.
+    </p>
+  </div>
+</div>
+
+<section style="border-top:1px solid var(--borda);padding:80px 24px;">
+  <div style="max-width:1000px;margin:0 auto;display:flex;gap:56px;align-items:center;flex-wrap:wrap;">
+
+    <div style="flex:1;min-width:280px;">
+      <p
+        style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;font-weight:600;opacity:.85;">
+        Processo</p>
+      <h3
+        style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.7rem;font-weight:400;color:var(--creme);margin-bottom:20px;line-height:1.4;">
+        Da especiaria<br>ao prazer
+      </h3>
+      <p style="color:var(--texto-soft);font-size:.9rem;line-height:1.9;margin-bottom:14px;">
+        Cada criação começa na seleção criteriosa de ingredientes raros - cacau de origem única, especiarias exóticas e
+        flores comestíveis colhidas em seu auge.
+      </p>
+      <p style="color:var(--texto-soft);font-size:.9rem;line-height:1.9;margin-bottom:14px;">
+        O cacau passa por um processo rigoroso de fermentação e torra controlada antes de ser transformado. As
+        especiarias são moídas na hora para preservar seus óleos essenciais e intensidade aromática.
+      </p>
+      <p style="color:var(--texto-soft);font-size:.9rem;line-height:1.9;">
+        O resultado é uma peça de chocolateria que respeita a matéria-prima e entrega uma experiência sensorial completa
+        - do aroma ao retrogosto.
+      </p>
+      <div
+        style="width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--ouro),transparent);margin-top:28px;">
+      </div>
+    </div>
+
+    <div style="flex:1;min-width:280px;">
+      <div style="border-radius:2px;overflow:hidden;border:1px solid var(--borda);aspect-ratio:4/3;position:relative;">
+        <img src="{% static 'img/especiarias.jpeg' %}" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <div
+          style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 50%,rgba(58,31,45,.15),transparent);pointer-events:none;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--borda);padding:80px 24px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <p
+      style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;font-weight:600;opacity:.85;text-align:center;">
+      Ingredientes</p>
+    <h3 class="page-title" style="margin-bottom:16px;">Raridades do Atelier</h3>
+    <p class="section-lede" style="margin-bottom:56px;">Cada ingrediente é escolhido pela sua singularidade aromática e
+      capacidade de transformar o chocolate em algo além do comum.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;">
+
+      <div class="card-home" style="padding:0;overflow:hidden;">
+        <div style="aspect-ratio:16/9;overflow:hidden;">
+          <img src="{% static 'img/DoceLavanda.jpeg' %}" alt="Doce de Lavanda"
+            style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease;display:block;">
+        </div>
+        <div style="padding:28px 28px 32px;">
+          <span
+            style="font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.7;font-weight:600;">Floral</span>
+          <h4
+            style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.1rem;color:var(--creme);margin:10px 0 12px;">
+            Lavanda Provençal</h4>
+          <p style="color:var(--texto-soft);font-size:.84rem;line-height:1.7;">Colhida no sul da França em seu pico de
+            floração, a lavanda confere ao chocolate notas florais delicadas com leve amargor herbal e acabamento
+            aveludado.</p>
+        </div>
+      </div>
+
+      <div class="card-home" style="padding:0;overflow:hidden;">
+        <div style="aspect-ratio:16/9;overflow:hidden;">
+          <img src="{% static 'img/PimentaRosaCristalizada.png' %}" alt="Pimenta Rosa Cristalizada"
+            style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease;display:block;">
+        </div>
+        <div style="padding:28px 28px 32px;">
+          <span
+            style="font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.7;font-weight:600;">Especiaria</span>
+          <h4
+            style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.1rem;color:var(--creme);margin:10px 0 12px;">
+            Pimenta Rosa Cristalizada</h4>
+          <p style="color:var(--texto-soft);font-size:.84rem;line-height:1.7;">Bagas frutadas do Brasil cristalizadas em
+            açúcar artesanal. Criam um contraste surpreendente entre o dulçor do chocolate e um calor suave e
+            persistente.</p>
+        </div>
+      </div>
+
+      <div class="card-home" style="padding:0;overflow:hidden;">
+        <div style="aspect-ratio:16/9;overflow:hidden;">
+          <img src="{% static 'img/CardamomoAzul.png' %}" alt="Cardamomo Azul"
+            style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease;display:block;">
+        </div>
+        <div style="padding:28px 28px 32px;">
+          <span
+            style="font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.7;font-weight:600;">Especiaria
+            Rara</span>
+          <h4
+            style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.1rem;color:var(--creme);margin:10px 0 12px;">
+            Cardamomo Azul</h4>
+          <p style="color:var(--texto-soft);font-size:.84rem;line-height:1.7;">Originário das altitudes do Nepal, o
+            cardamomo azul traz um perfil defumado e campestre único, completamente distinto do cardamomo comum — uma
+            raridade nos ateliers do mundo.</p>
+        </div>
+      </div>
+
+      <div class="card-home" style="padding:0;overflow:hidden;">
+        <div style="aspect-ratio:16/9;overflow:hidden;">
+          <img src="{% static 'img/AçafrãoNegro.png' %}" alt="Açafrão Negro"
+            style="width:100%;height:100%;object-fit:cover;transition:transform .7s ease;display:block;">
+        </div>
+        <div style="padding:28px 28px 32px;">
+          <span
+            style="font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.7;font-weight:600;">Preciosidade</span>
+          <h4
+            style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.1rem;color:var(--creme);margin:10px 0 12px;">
+            Açafrão Negro</h4>
+          <p style="color:var(--texto-soft);font-size:.84rem;line-height:1.7;">O ingrediente mais raro do nosso atelier.
+            Cultivado no Irã em pequenas quantidades, o açafrão negro infunde ao chocolate uma profundidade terrosa e um
+            retrogosto dourado inesquecível.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--borda);padding:80px 24px;">
+  <div style="max-width:900px;margin:0 auto;">
+    <p
+      style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:12px;font-weight:600;opacity:.85;text-align:center;">
+      Desenvolvimento</p>
+    <h3 class="page-title" style="margin-bottom:56px;">Os Desenvolvedores</h3>
+
+    <div style="display:flex;gap:28px;justify-content:center;flex-wrap:wrap;">
+
+      <div class="card-home" style="width:260px;text-align:center;">
+        <div
+          style="width:80px;height:80px;border-radius:50%;background:rgba(58,31,45,.5);border:1px solid var(--borda);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.4rem;color:var(--ouro);">
+          DS
+        </div>
+        <h4>Davi de Souza</h4>
+        <p
+          style="color:var(--ouro);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;font-weight:600;">
+          Back-end</p>
+        <p>Arquitetura Django, APIs REST, integração Firebase e estrutura de banco de dados.</p>
+      </div>
+
+      <div class="card-home" style="width:260px;text-align:center;">
+        <div
+          style="width:80px;height:80px;border-radius:50%;background:rgba(58,31,45,.5);border:1px solid var(--borda);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.4rem;color:var(--ouro);">
+          SB
+        </div>
+        <h4>Sabrina Bispo</h4>
+        <p
+          style="color:var(--ouro);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;font-weight:600;">
+          Front-end</p>
+        <p>Design de interfaces premium, identidade visual Noir de Fleur e experiência do usuário.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section
+  style="border-top:1px solid var(--borda);padding:80px 24px;text-align:center;background:radial-gradient(ellipse 50% 80% at 50% 100%,rgba(58,31,45,.3),transparent);">
+  <p
+    style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:20px;font-weight:600;opacity:.85;">
+    Conheça</p>
+  <h3
+    style="font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.9rem;font-weight:400;color:var(--creme);margin-bottom:32px;">
+    Descubra nossa coleção</h3>
+  <a href="{% url 'produtovitrine' %}" class="btn btn-primary">Ver Coleção</a>
+</section>
+
+{% endblock %}

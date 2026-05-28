@@ -1,0 +1,84 @@
+{% extends 'template.html' %}
+{% block titulo %}Meu Perfil Noir de Fleur{% endblock %}
+{% block conteudo %}
+<div class="container" style="max-width:900px;">
+
+  <!-- Cabeçalho do perfil -->
+  <div class="form-card" style="text-align:center;margin-bottom:40px;padding:48px;">
+    <p
+      style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;font-weight:600;opacity:.85;">
+      Área do Cliente</p>
+
+    <div
+      style="width:64px;height:64px;border-radius:50%;background:var(--ameixa);border:1px solid var(--borda-hover);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Bodoni Moda',serif;font-style:italic;color:var(--ouro);font-size:1.6rem;">
+      {{ user.username|first|upper }}
+    </div>
+
+    <h2
+      style="font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:1.8rem;color:var(--creme);margin-bottom:8px;">
+      {{ user.username }}
+    </h2>
+
+    <p style="color:var(--texto-soft);font-size:.85rem;letter-spacing:.5px;margin-bottom:28px;">
+      {% if user.email %}{{ user.email }}{% else %}E-mail não informado{% endif %}
+    </p>
+
+    <div
+      style="width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--ouro),transparent);margin:0 auto 28px;">
+    </div>
+
+    <a href="{% url 'alterarsenha' %}" class="btn" style="padding:10px 24px;font-size:.75rem;">Alterar Senha</a>
+  </div>
+
+  <!-- Histórico de compras -->
+  <div class="table-wrapper">
+    <div class="table-header" style="justify-content:space-between;align-items:center;padding:24px 28px;">
+      <div>
+        <p
+          style="font-size:.6rem;letter-spacing:6px;text-transform:uppercase;color:var(--ouro);opacity:.7;margin-bottom:6px;font-weight:600;">
+          Histórico</p>
+        <p style="font-family:'Bodoni Moda',serif;font-style:italic;color:var(--creme);font-size:1.2rem;margin:0;">
+          Minhas Compras</p>
+      </div>
+      <a href="{% url 'produtovitrine' %}" class="btn" style="padding:8px 18px;">Ver Coleção</a>
+    </div>
+
+    {% if compras %}
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Total</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for compra in compras %}
+        <tr>
+          <td style="color:var(--creme);">{{ compra.produto.nome }}</td>
+          <td style="color:var(--ouro);font-weight:600;">R$ {{ compra.total }}</td>
+          <td>{{ compra.data|date:"d/m/Y H:i" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div style="padding:20px 28px;border-top:1px solid var(--borda);text-align:right;">
+      <a href="{% url 'avaliacao' %}" class="btn btn-primary" style="padding:10px 24px;font-size:.75rem;">
+        Avaliar minha compra
+      </a>
+    </div>
+
+    {% else %}
+    <div style="padding:64px 24px;text-align:center;">
+      <p
+        style="font-family:'Bodoni Moda',serif;font-style:italic;color:var(--creme);font-size:1.2rem;margin-bottom:10px;">
+        Nenhuma compra ainda</p>
+      <p style="color:var(--texto-soft);font-size:.85rem;letter-spacing:.5px;margin-bottom:28px;">Explore nossa coleção
+        e encontre seu chocolate ideal.</p>
+      <a href="{% url 'produtovitrine' %}" class="btn btn-primary">Explorar Coleção</a>
+    </div>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

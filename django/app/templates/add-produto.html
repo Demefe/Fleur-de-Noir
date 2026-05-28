@@ -1,0 +1,36 @@
+{% extends 'template.html' %}
+{% block titulo %}Novo Produto Noir de Fleur{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+  <div class="form-card" style="max-width:620px;margin-top:60px;margin-bottom:60px;">
+
+    <div style="text-align:center;margin-bottom:36px;">
+      <p style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;font-weight:600;opacity:.85;">Administração</p>
+      <h2 style="margin-bottom:0;">Novo Produto</h2>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}
+          <span>{{ field.help_text }}</span>
+        {% endif %}
+        {% for error in field.errors %}
+          <span style="color:#ff8fa3;font-size:.76rem;margin-top:6px;display:block;">{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% endfor %}
+
+      <div style="display:flex;gap:12px;margin-top:8px;">
+        <button type="submit" class="btn btn-primary" style="flex:1;padding:15px;">Salvar Produto</button>
+        <a href="{% url 'produto' %}" class="btn" style="padding:15px 20px;">Cancelar</a>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

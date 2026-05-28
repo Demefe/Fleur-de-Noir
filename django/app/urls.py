@@ -1,0 +1,33 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("", views.index, name="index"),
+    path("quem-somos/", views.quemSomos, name="quemsomos"),
+    path("produtos/", views.Produto, name="produtos"),
+    path("fale-conosco/", views.faleConosco, name="faleconosco"),
+    path("dashboard/", views.dashboard, name="dashboard"),
+    path("criar-usuario/", views.criarUsuario, name="criarusuario"),
+    path("usuario/", views.listarUsuario, name="usuario"),
+    path("produto-vitrine/", views.produto_vitrine, name="produtovitrine"),
+    path("avaliacao/", views.avaliacao, name="avaliacao"),
+    path("edit-usuario/<int:id_user>/", views.editUsuario, name="editusuario"),
+    path("del-usuario/<int:id_user>/", views.delUsuario, name="delusuario"),
+    path("categoria/", views.listarCategoria, name="categoria"),
+    path("add-categoria/", views.addCategoria, name="addcategoria"),
+    path("edit-categoria/<int:id_cat>/", views.editCategoria, name="editcategoria"),
+    path("del-categoria/<int:id_cat>/", views.delCategoria, name="delcategoria"),
+    path("contato/", views.listarContato, name="contato"),
+    path("del-contato/<int:id_cont>/", views.delContato, name="delcontato"),
+    path("produto/", views.listarProduto, name="produto"),
+    path("add-produto/", views.addProduto, name="addproduto"),
+    path("edit-produto/<int:id_prod>/", views.editProduto, name="editproduto"),
+    path("del-produto/<int:id_prod>/", views.delProduto, name="delproduto"),
+    path("produto-vitrine/", views.produto_vitrine, name="produtovitrine"),
+    path("comprar/<int:id_prod>/", views.comprar, name="comprar"),
+    path("perfil/", views.perfil, name="perfil"),
+    path("avaliacao-admin/", views.avaliacao_admin, name="avaliacaoadmin"),
+    path("del-avaliacao/<str:id_aval>/", views.delAvaliacao, name="delavaliacao"),
+    path("vendas/", views.vendas, name="vendas"),
+    path("del-compra/<int:id_compra>/", views.delCompra, name="delcompra"),
+]

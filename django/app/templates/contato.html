@@ -1,0 +1,39 @@
+{% extends 'template.html' %}
+{% block titulo %}Contatos{% endblock %}
+{% block conteudo %}
+<div class="container">
+    <h2 class="page-title">Contatos</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Assunto</th>
+                    <th>Mensagem</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cont in contato %}
+                <tr>
+                    <td>{{ cont.id }}</td>
+                    <td>{{ cont.nome }}</td>
+                    <td>{{ cont.email }}</td>
+                    <td>{{ cont.assunto }}</td>
+                    <td>{{ cont.mensagem }}</td>
+                    <td class="acoes">
+                        <a href="{% url 'delcontato' cont.id %}" class="btn btn-red">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align:center;color:#888;">Nenhuma mensagem recebida.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

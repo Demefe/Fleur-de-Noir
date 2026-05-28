@@ -1,0 +1,36 @@
+{% extends 'template.html' %}
+
+{% block titulo %}Editar Usuário{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+  <div class="form-card">
+
+    <h2>Editar Usuário</h2>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" name="first_name" value="{{ usuario.first_name }}" placeholder="Nome do usuário">
+      </div>
+
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" name="email" value="{{ usuario.email }}" placeholder="E-mail do usuário">
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px;padding:15px;">
+        Salvar Alterações
+      </button>
+
+    </form>
+
+    <p style="text-align:center;margin-top:28px;font-size:.78rem;color:var(--texto-soft);letter-spacing:.5px;">
+      <a href="{% url 'usuario' %}" style="color:var(--ouro);text-decoration:none;font-weight:600;">← Voltar</a>
+    </p>
+
+  </div>
+</div>
+{% endblock %}

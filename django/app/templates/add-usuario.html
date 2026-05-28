@@ -1,0 +1,47 @@
+{% extends 'template.html' %}
+
+{% block titulo %}
+Cadastro de Usuário
+{% endblock %}
+
+{% block conteudo %}
+
+<div class="container">
+
+    <div class="form-card">
+        <h2>Criar Conta</h2>
+        <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">
+                    {{ field.label }}:
+                </label>
+                {{ field }}
+                {% if field.help_text %}
+                <span class="helptext">
+                    {{ field.help_text|safe }}
+                </span>
+                {% endif %}
+                {% for error in field.errors %}
+                <span style="color:red; font-size:0.83rem;">
+                    {{ error }}
+                </span>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary" style="width:100%;margin-top:8px;padding:15px;">
+                Criar conta
+            </button>
+        </form>
+
+        <p style="text-align:center;margin-top:28px;font-size:.78rem;color:var(--texto-soft);letter-spacing:.5px;">
+            Já tem conta?
+            <a href="{% url 'login' %}"
+                style="color:var(--ouro);text-decoration:none;font-weight:600;margin-left:4px;">Entrar</a>
+        </p>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'template.html' %}
+{% block titulo %}Senha Alterada Noir de Fleur{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+  <div class="confirm-card" style="margin-top:40px;">
+
+    <div style="margin-bottom:24px;font-size:1.6rem;opacity:.6;">✦</div>
+
+    <p
+      style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;font-weight:600;opacity:.85;">
+      Concluído
+    </p>
+
+    <h2>Senha alterada<br>com sucesso</h2>
+
+    <div
+      style="width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--ouro),transparent);margin:20px auto 24px;">
+    </div>
+
+    <p>Sua senha foi atualizada. Você já pode continuar navegando normalmente.</p>
+
+    <div class="confirm-btns" style="flex-direction:column;gap:10px;">
+      <a href="{% url 'dashboard' %}" class="btn btn-primary">Ir ao Dashboard</a>
+      <a href="{% url 'index' %}" class="btn">Página Inicial</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

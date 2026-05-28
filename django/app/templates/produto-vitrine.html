@@ -1,0 +1,77 @@
+{% extends 'template.html' %}
+{% block titulo %}Coleção Noir de Fleur{% endblock %}
+{% block conteudo %}
+<div style="text-align:center;padding:80px 24px 48px;">
+  <p
+    style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;font-weight:600;opacity:.85;">
+    Exclusividade</p>
+  <h2 class="page-title">Nossa Coleção</h2>
+</div>
+
+{% if produtos %}
+<div class="vitrine">
+  {% for prod in produtos %}
+  <div class="prod-card">
+    <div class="prod-card-img">
+      {% if prod.imagem %}
+      <img src="/media/{{ prod.imagem }}" alt="{{ prod.nome }}">
+      {% else %}
+      <img src="https://placehold.co/200x180/1a1118/C78B6B?text=NdF" alt="{{ prod.nome }}">
+      {% endif %}
+    </div>
+    <div class="prod-card-body">
+      <strong>{{ prod.nome }}</strong>
+      <div class="preco">R$ {{ prod.preco }}</div>
+      {% if prod.quantidade > 0 %}
+      <div class="estoque">{{ prod.categoria|default:"—" }}</div>
+      {% if user.is_authenticated %}
+      <a href="{% url 'comprar' prod.id %}" class="btn btn-green"
+        style="width:100%;text-align:center;display:block;">Comprar</a>
+      {% else %}
+      <a href="{% url 'login' %}" class="btn" style="width:100%;text-align:center;display:block;opacity:.6;">Entre para
+        comprar</a>
+      {% endif %}
+      {% else %}
+      <div class="estoque" style="color:var(--danger);">Fora de estoque</div>
+      <button class="btn" style="width:100%;opacity:.3;cursor:not-allowed;" disabled>Indisponível</button>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<section style="border-top:1px solid var(--borda);margin-top:80px;padding:80px 24px 40px;">
+  <h3 class="page-title" style="margin-bottom:48px;">Coleção Completa</h3>
+  <div class="vitrine">
+    {% for produto in produtos_api %}
+    <div class="prod-card">
+      <div class="prod-card-img">
+        {% if produto.imagem %}
+        <img src="/media/{{ produto.imagem }}" alt="{{ produto.nome }}">
+        {% else %}
+        <img src="https://placehold.co/200x180/1a1118/C78B6B?text=NdF" alt="{{ produto.nome }}">
+        {% endif %}
+      </div>
+      <div class="prod-card-body">
+        <strong>{{ produto.nome }}</strong>
+        <div class="preco">R$ {{ produto.preco }}</div>
+        {% if produto.quantidade > 0 %}
+        <div class="estoque">{{ produto.categoria|default:"—" }}</div>
+        {% if user.is_authenticated %}
+        <a href="{% url 'comprar' produto.id %}" class="btn btn-green"
+          style="width:100%;text-align:center;display:block;">Comprar</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="btn" style="width:100%;text-align:center;display:block;opacity:.6;">Entre
+          para comprar</a>
+        {% endif %}
+        {% else %}
+        <div class="estoque" style="color:var(--danger);">Fora de estoque</div>
+        <button class="btn" style="width:100%;opacity:.3;cursor:not-allowed;" disabled>Indisponível</button>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

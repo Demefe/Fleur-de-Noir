@@ -1,0 +1,6 @@
+firebase.json
+django/firebase.json
+.env
+venv/
+__pycache__/
+db.sqlite3

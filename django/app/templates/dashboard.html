@@ -1,0 +1,63 @@
+{% extends 'template.html' %}
+{% block titulo %}Dashboard Noir de Fleur{% endblock %}
+{% block conteudo %}
+<div class="container">
+  <div style="text-align:center;margin-bottom:64px;">
+    <p
+      style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--ouro);margin-bottom:16px;font-weight:600;opacity:.85;">
+      Administração</p>
+    <h2 class="page-title">Dashboard</h2>
+    <p style="color:var(--texto-soft);font-size:.88rem;letter-spacing:.5px;">Bem-vindo, {{ user.username }}</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:0 auto;">
+    <a href="{% url 'usuario' %}" class="dash-card">
+      <div
+        style="font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.6;margin-bottom:16px;">
+        01</div>
+      <div class="dash-card-line"></div>
+      <h4>Usuários</h4>
+      <p>Gerencie cadastros e permissões de clientes</p>
+    </a>
+    <a href="{% url 'produto' %}" class="dash-card">
+      <div
+        style="font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.6;margin-bottom:16px;">
+        02</div>
+      <div class="dash-card-line"></div>
+      <h4>Produtos</h4>
+      <p>Cadastre e gerencie a coleção de chocolates</p>
+    </a>
+    <a href="{% url 'categoria' %}" class="dash-card">
+      <div
+        style="font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.6;margin-bottom:16px;">
+        03</div>
+      <div class="dash-card-line"></div>
+      <h4>Categorias</h4>
+      <p>Organize os produtos por linha e coleção</p>
+    </a>
+    <a href="{% url 'vendas' %}" class="dash-card">
+      <div
+        style="font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.6;margin-bottom:16px;">
+        04</div>
+      <div class="dash-card-line"></div>
+      <h4>Vendas</h4>
+      <p>Acompanhe o histórico de compras realizadas</p>
+    </a>
+    <a href="{% url 'contato' %}" class="dash-card">
+      <div
+        style="font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.6;margin-bottom:16px;">
+        05</div>
+      <div class="dash-card-line"></div>
+      <h4>Contatos</h4>
+      <p>Visualize mensagens recebidas dos clientes</p>
+    </a>
+    <a href="{% url 'avaliacaoadmin' %}" class="dash-card">
+      <div
+        style="font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--ouro);opacity:.6;margin-bottom:16px;">
+        06</div>
+      <div class="dash-card-line"></div>
+      <h4>Avaliações</h4>
+      <p>Acompanhe avaliações e comentários Firebase</p>
+    </a>
+  </div>
+</div>
+{% endblock %}

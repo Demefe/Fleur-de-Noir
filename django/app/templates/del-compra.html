@@ -1,0 +1,30 @@
+{% extends 'template.html' %}
+{% block titulo %}Excluir Compra Noir de Fleur{% endblock %}
+
+{% block conteudo %}
+<div class="container">
+  <div class="confirm-card" style="margin-top:40px;">
+
+    <div style="margin-bottom:24px;font-size:1.6rem;opacity:.6;">✦</div>
+
+    <p style="font-size:.6rem;letter-spacing:8px;text-transform:uppercase;color:var(--danger);margin-bottom:16px;font-weight:600;opacity:.85;">
+      Atenção
+    </p>
+
+    <h2>Excluir Compra</h2>
+
+    <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--ouro),transparent);margin:20px auto 24px;"></div>
+
+    <p>Deseja excluir a compra de <strong style="color:var(--creme);">{{ compra.produto.nome }}</strong> do cliente <strong style="color:var(--creme);">{{ compra.usuario.username }}</strong>?</p>
+
+    <div class="confirm-btns" style="margin-top:32px;">
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-red">Confirmar Exclusão</button>
+      </form>
+      <a href="{% url 'vendas' %}" class="btn">Cancelar</a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

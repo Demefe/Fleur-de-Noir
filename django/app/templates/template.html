@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0608">
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block titulo %}Noir de Fleur{% endblock %}</title>
+</head>
+
+<body>
+    <div class="grain" aria-hidden="true"></div>
+    <header class="site-header">
+        <a href="{% url 'index' %}" class="header-brand" aria-label="Noir de Fleur - Início">
+            <img src="{% static 'img/logo.png' %}" alt="Noir de Fleur" class="header-logo">
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primary-nav">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="primary-nav" class="primary-nav">
+            <a href="{% url 'index' %}">Início</a>
+            <a href="{% url 'quemsomos' %}">Quem Somos</a>
+            <a href="{% url 'produtovitrine' %}">Coleção</a>
+            <a href="{% url 'faleconosco' %}">Fale Conosco</a>
+            {% if user.is_authenticated %}
+            <div class="nav-user">
+                <label>{{ user.username }}</label>
+                <a href="{% url 'perfil' %}">Perfil</a>
+                {% if user.is_staff %}
+                <a href="{% url 'dashboard' %}">Painel</a>
+                {% endif %}
+                <form action="{% url 'logout' %}" method="post" style="margin:0;">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-logout">Sair</button>
+                </form>
+            </div>
+            {% else %}
+            <a href="{% url 'login' %}" class="nav-login">Entrar</a>
+            {% endif %}
+        </nav>
+    </header>
+    {% if messages %}
+    <div class="messages" role="status" aria-live="polite">
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <img src="{% static 'img/logo.png' %}" alt="Noir de Fleur"
+                    style="height:56px;object-fit:contain;margin-bottom:16px;opacity:.8;">
+                <p>Alta chocolateria artesanal. Flores raras, especiarias do oriente, cacau de exceção.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Navegação</h5>
+                <a href="{% url 'quemsomos' %}">Quem Somos</a>
+                <a href="{% url 'produtovitrine' %}">Coleção</a>
+                <a href="{% url 'faleconosco' %}">Fale Conosco</a>
+            </div>
+            <div class="footer-col">
+                <h5>Ateliê</h5>
+                <p>Paris · 1º arrondissement<br>Somente com agendamento</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 Noir de Fleur - Todos os direitos reservados</span>
+            <span class="footer-brand">Noir de Fleur</span>
+        </div>
+    </footer>
+    <script>
+        (function () {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+        })();
+        (function () {
+            const btn = document.querySelector('.nav-toggle');
+            const nav = document.getElementById('primary-nav');
+            if (!btn || !nav) return;
+            btn.addEventListener('click', () => {
+                const open = nav.classList.toggle('is-open');
+                btn.setAttribute('aria-expanded', open);
+                btn.classList.toggle('is-active', open);
+            });
+        })();
+    </script>
+</body>
+
+</html>
