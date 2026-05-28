@@ -80,14 +80,16 @@ WSGI_APPLICATION = 'projeto.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
+DATABASE_URL = os.environ.get('DATABASE_URL', '')
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+        default=DATABASE_URL,
+        conn_max_age=600
     )
 }
-
-
-
+import sys
+print(f"DATABASE_URL: {DATABASE_URL}", file=sys.stderr)
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
