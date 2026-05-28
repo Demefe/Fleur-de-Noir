@@ -10,3 +10,5 @@ whitenoise==6.12.0
 djangorestframework
 django-cors-headers
 Pillow
+firebase-admin
+requests
