@@ -16,10 +16,22 @@ def index(request):
         for doc in docs:
             dados = doc.to_dict()
             dados["id"] = doc.id
+            dados["nota"] = int(dados.get("nota", 0))
             avaliacoes.append(dados)
-    except:
+    except Exception as e:
+        print(f"Erro Firebase: {e}")
         avaliacoes = []
-    return render(request, "index.html", {"avaliacoes": avaliacoes})
+
+    produtos_destaque = Produto.objects.filter(quantidade__gt=0).order_by("?")[:4]
+
+    return render(
+        request,
+        "index.html",
+        {
+            "avaliacoes": avaliacoes,
+            "produtos_destaque": produtos_destaque,
+        },
+    )
 
 
 def quemSomos(request):
@@ -89,14 +101,12 @@ def avaliacao(request):
         cliente = request.POST.get("cliente")
         comentario = request.POST.get("comentario")
         nota = request.POST.get("nota")
-        db.collection("avaliacao").add(
-            {
-                "cliente": cliente,
-                "usuario_id": request.user.id,
-                "comentario": comentario,
-                "nota": int(nota),
-            }
-        )
+        db.collection("avaliacao").add({
+            "cliente": cliente,
+            "usuario_id": request.user.id,
+            "comentario": comentario,
+            "nota": int(nota),
+        })
         messages.success(request, "Avaliação enviada com sucesso!")
         return redirect("avaliacao")
     avaliacoes = []
@@ -104,10 +114,9 @@ def avaliacao(request):
     for doc in docs:
         dados = doc.to_dict()
         dados["id"] = doc.id
+        dados["nota"] = int(dados.get("nota", 0))
         avaliacoes.append(dados)
-    return render(
-        request, "avaliacao.html", {"avaliacoes": avaliacoes, "tem_compra": tem_compra}
-    )
+    return render(request, "avaliacao.html", {"avaliacoes": avaliacoes, "tem_compra": tem_compra})
 
 
 @login_required(login_url="/login/")
@@ -294,6 +303,7 @@ def avaliacao_admin(request):
     for doc in docs:
         dados = doc.to_dict()
         dados["id"] = doc.id
+        dados["nota"] = int(dados.get("nota", 0))
         avaliacoes.append(dados)
     return render(request, "avaliacao-admin.html", {"avaliacoes": avaliacoes})
 
